@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>gl-matrix</title>
+    <script crossorigin="anonymous" integrity="sha384-iZsEdQFxjZXMEJXbMmLFgTxAXLIhscrTeHOe466nX1siiBSQreDzjxh1VJDWBjya"
+        src="https://lib.baomitu.com/gl-matrix/2.8.1/gl-matrix-min.js"></script>
+</head>
+
+<body>
+
+    <script>
+        // 求 坐标系2 上的坐标 在坐标系1 上的坐标的值。 设坐标系1 为原点坐标系。
+        const rotationCenter = [100, 100]  
+        const scaleVector = [0.5, 0.5]      
+        const roateDeg = (30 / 180) * Math.PI  
+
+        // 偏移
+        const transMartrix = mat3.fromTranslation(mat3.create(), [rotationCenter[0], rotationCenter[1]]);
+        // 缩放
+        const scaleMartrix = mat3.fromScaling(mat3.create(), scaleVector);
+        // 旋转
+        const rotateMartrix = mat3.fromRotation(mat3.create(), roateDeg);   // x 轴方向为 0 度、逆时针为正方向
+
+        const aMatrix = mat3.multiply(mat3.create(), transMartrix, scaleMartrix);
+        const modelMatrix = mat3.multiply(mat3.create(), aMatrix, rotateMartrix);
+
+        const localPointVector = [100, 0]   // 在坐标系 2 上的一个坐标
+        const worldPointVector = []
+
+        vec2.transformMat3(worldPointVector, localPointVector, modelMatrix)
+
+
+        console.log(worldPointVector)
+
+        const invertedModelMatrix = mat3.invert(mat3.create(), modelMatrix)
+
+        vec2.transformMat3(localPointVector, worldPointVector, invertedModelMatrix)
+
+        console.log(localPointVector)
+    </script>
+</body>
+
+</html>
