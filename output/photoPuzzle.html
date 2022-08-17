@@ -1,11 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <title>pic</title>
-    <style>
-        body {
+<!doctype html><html lang="en"><head><meta charset="UTF-8"><title>pic</title><style>body {
             padding: 10px;
             margin: 0px;
         }
@@ -62,23 +55,4 @@
             box-sizing: border-box;
             background-color: white;
             border: 3px dashed grey;
-        }
-    </style>
-</head>
-
-<body>
-    <div class="btnContainer">
-        <div class="btnBase btnBlue" id="chooseTargetImage">选择目标图片</div>
-        <div class="btnBase btnBlue" id="choosePuzzleImage">选择拼图图片</div>
-        <div class="btnBase btnBlue" id="startRender">开始渲染</div>
-        <div class="btnBase btnWhite" id="exportImage">下载图片</div>
-    </div>
-    <h4>目标图片</h4>
-    <div class="targetImageContainer" id="targetImageContainer"></div>
-    <h4>拼图图片</h4>
-    <div class="puzzleImagesContainer" id="puzzleImagesContainer"></div>
-    <!--canvas标签创建一个宽高均为500像素，背景为蓝色的矩形画布-->
-    <canvas id="webgl" class="canvas"></canvas>
-</body>
-
-</html>
+        }</style></head><body><div class="btnContainer"><div class="btnBase btnBlue" id="chooseTargetImage">选择目标图片</div><div class="btnBase btnBlue" id="choosePuzzleImage">选择拼图图片</div><div class="btnBase btnBlue" id="startRender">开始渲染</div><div class="btnBase btnWhite" id="exportImage">下载图片</div></div><h4>目标图片</h4><div class="targetImageContainer" id="targetImageContainer"></div><h4>拼图图片</h4><div class="puzzleImagesContainer" id="puzzleImagesContainer"></div><canvas id="webgl" class="canvas"></canvas><script src="runtime.js"></script><script src="photoPuzzle.js"></script></body></html>

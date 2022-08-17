@@ -1,18 +1,10 @@
-// FIXME: test
-// const canvas = document.createElement('canvas')
-// document.body.prepend(canvas)
-// const ctx = canvas.getContext('2d')
-// canvas.width = 1500
-// canvas.height = 1500
-// canvas.style.cssText = `border:10px solid red;width:50vw;height:50vw;`
-
 /**
- *
+ * 将一张图片按照一定宽高,切分成若干像素块,并记录块的起始与终止像素
  * @param {*} texture
  * @param {*} sumCols 区分为 sumCols 列
  * @param {*} sumRows 区分为 sumRows 行
  */
-function convoluteChunks(texture, sumCols, sumRows) {
+function splitChunks(texture, sumCols, sumRows) {
   const widthPixels = Math.floor(texture.width / sumCols) // 子块宽度像素
   const heightPixels = Math.floor(texture.height / sumRows) // 子块高度像素
   const pixelsChunks = [] // 像素块
@@ -32,7 +24,7 @@ function convoluteChunks(texture, sumCols, sumRows) {
 }
 
 /**
- *
+ * 计算某一个像素块的平均像素值
  * @param {*} texture
  * @param {*} pixelsChunk
  */
@@ -57,34 +49,14 @@ function calculateAverageRGBChunk(texture, pixelsChunk) {
 }
 
 /**
+ * 将一个图片按照一定宽高切分成不同的块后,计算每个块的平均像素值
  * @param {*} texture
  */
 export default function calculateAverageRGBChunks(texture, sumCols, sumRows) {
   const averagePixels = []
-  const pixelsChunks = convoluteChunks(texture, sumCols, sumRows)
+  const pixelsChunks = splitChunks(texture, sumCols, sumRows)
   for (const pixelsChunk of pixelsChunks) {
     averagePixels.push(calculateAverageRGBChunk(texture, pixelsChunk))
   }
-
-//   const singlePixelWidth = Math.floor(canvas.width / sumCols)
-//   const singlePixelHeight = Math.floor(canvas.height / sumRows)
-
-  // FIXME: test draw on the canvas
-  //   if(istest){
-  //     for (let i = 0; i < sumRows; i++) {
-  //         for (let j = 0; j < sumCols; j++) {
-  //           const index = i * sumCols + j
-  //           const pixels = averagePixels[index]
-  //           ctx.fillStyle = `rgba(${pixels[0]},${pixels[1]},${pixels[2]},${pixels[3]})`
-  //           ctx.fillRect(
-  //             j * singlePixelWidth,
-  //             i * singlePixelHeight,
-  //             singlePixelWidth,
-  //             singlePixelHeight,
-  //           )
-  //         }
-  //       }
-  //   }
-
   return averagePixels
 }

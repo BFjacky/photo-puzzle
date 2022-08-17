@@ -122,6 +122,10 @@ class Renderer {
     return sprite
   }
 
+  clearSprites() {
+    this._sprites = []
+  }
+
   createCubeSprite(params) {
     const cubeSprite = new Cube(params, this)
     cubeSprite.setRenderer(this)

@@ -3,38 +3,18 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
   entry: {
-    index_vao: path.resolve(__dirname, './src/renderer/index/index_vao.js'),
-    index_2d: path.resolve(__dirname, './src/renderer/index/index_2d.js'),
-    index_painter: path.resolve(__dirname, './src/painter/index/index_painter.js')
+    // index_vao: path.resolve(__dirname, './src/renderer/index/index_vao.js'),
+    // index_2d: path.resolve(__dirname, './src/renderer/index/index_2d.js'),
+    photoPuzzle: path.resolve(__dirname, './src/painter/index/photoPuzzle.js'),
   },
   output: {
     path: path.resolve(__dirname, 'output'),
   },
   plugins: [
     new HtmlWebpackPlugin({
-      filename: 'index.html',
+      filename: 'photoPuzzle.html',
       template: './src/index.html',
-      chunks: ['index'],
-    }),
-    new HtmlWebpackPlugin({
-      filename: 'index_3d.html',
-      template: './src/index.html',
-      chunks: ['index_3d'],
-    }),
-    new HtmlWebpackPlugin({
-      filename: 'index_2d.html',
-      template: './src/index.html',
-      chunks: ['index_2d'],
-    }),
-    new HtmlWebpackPlugin({
-      filename: 'index_vao.html',
-      template: './src/index.html',
-      chunks: ['index_vao'],
-    }),
-    new HtmlWebpackPlugin({
-      filename: 'index_painter.html',
-      template: './src/index.html',
-      chunks: ['index_painter'],
+      chunks: ['photoPuzzle'],
     }),
   ],
   devServer: {
@@ -56,7 +36,7 @@ module.exports = {
   },
   optimization: {
     runtimeChunk: 'single',
-    minimize: false,
+    minimize: true,
     // minimizer: [
     //   new UglifyJSPlugin({
     //     cache: true,
