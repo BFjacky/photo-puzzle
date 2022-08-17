@@ -8,7 +8,7 @@ module.exports = {
     photoPuzzle: path.resolve(__dirname, './src/painter/index/photoPuzzle.js'),
   },
   output: {
-    path: path.resolve(__dirname, 'output'),
+    path: path.resolve(__dirname, 'docs'),
   },
   plugins: [
     new HtmlWebpackPlugin({
