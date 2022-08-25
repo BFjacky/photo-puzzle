@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>pic</title>
+    <style>
+        body {
+            padding: 10px;
+            margin: 0px;
+        }
+
+        .btnContainer {
+            display: flex;
+            align-items: center;
+        }
+
+        .btnBase {
+            width: 120px;
+            height: 50px;
+            border-radius: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            margin-right: 10px;
+            ;
+        }
+
+        .btnBlue {
+            color: #fff;
+            background: #0170fe;
+
+        }
+
+        .btnWhite {
+            color: #0170fe;
+            border: 1px solid #0170fe;
+        }
+
+        .targetImageContainer {
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        .puzzleImagesContainer {
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+            overflow-x: auto;
+        }
+
+        img {
+            margin-right: 10px;
+        }
+
+        .canvas {
+            margin-top: 10px;
+            width: calc(100vw - 20px);
+            height: calc(100vh - 20px);
+            box-sizing: border-box;
+            background-color: white;
+            border: 3px dashed grey;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="btnContainer">
+        <div class="btnBase btnBlue" id="chooseTargetImage">选择目标图片</div>
+        <div class="btnBase btnBlue" id="choosePuzzleImage">选择拼图图片</div>
+        <div class="btnBase btnBlue" id="startRender">开始渲染</div>
+        <div class="btnBase btnWhite" id="exportImage">下载图片</div>
+    </div>
+    <h4>目标图片</h4>
+    <div class="targetImageContainer" id="targetImageContainer"></div>
+    <h4>拼图图片</h4>
+    <div class="puzzleImagesContainer" id="puzzleImagesContainer"></div>
+    <!--canvas标签创建一个宽高均为500像素，背景为蓝色的矩形画布-->
+    <canvas id="webgl" class="canvas"></canvas>
+</body>
+
+</html>
